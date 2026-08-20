@@ -1,187 +1,525 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Google Ads | Fénix Beach | Plan de campañas</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#202124;background:#f8f9fa}
-.app{display:flex;min-height:100vh}.side{width:272px;background:#fff;border-right:1px solid #e5e7eb;padding:18px 12px;position:fixed;height:100vh;overflow:auto}.brand{display:flex;align-items:center;gap:10px;padding:6px 10px 22px;font-size:20px;font-weight:600}.dots{display:flex;gap:3px}.dots i{width:8px;height:8px;border-radius:50%;display:block}.dots i:nth-child(1){background:#4285f4}.dots i:nth-child(2){background:#ea4335}.dots i:nth-child(3){background:#fbbc04}.dots i:nth-child(4){background:#34a853}
-.nav,.hotel-link{width:100%;border:0;background:transparent;text-align:left;padding:11px 12px;border-radius:8px;color:#3c4043;font-size:14px;cursor:pointer;margin:2px 0}.nav:hover,.hotel-link:hover,.nav.active{background:#e8f0fe;color:#1967d2}.side-section{font-size:11px;color:#5f6368;text-transform:uppercase;letter-spacing:.6px;padding:18px 12px 6px}.hotel-link{display:flex;gap:9px;align-items:center}.mark{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#e8f0fe;color:#1967d2;font-weight:bold}.hotel-link span{display:block;font-size:11px;color:#5f6368;margin-top:2px}
-.main{margin-left:272px;width:calc(100% - 272px)}.filterbar{height:68px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:10px;padding:0 28px;position:sticky;top:0;z-index:5}.filter{border:1px solid #dadce0;background:#fff;padding:9px 13px;border-radius:5px;font-size:12px}.filter.primary{border-color:#1a73e8;color:#1967d2}.page{display:none;padding:28px;max-width:1500px;margin:auto}.page.active{display:block}.title{font-size:28px;margin:0 0 6px}.subtitle{color:#5f6368;margin-bottom:18px}.notice{background:#fef7e0;border:1px solid #fce8b2;border-radius:8px;padding:13px 16px;font-size:13px;color:#5f6368;margin-bottom:18px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.score,.card,.detail-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px}.score .label{font-size:12px;color:#5f6368}.score .value{font-size:26px;font-weight:600;margin:7px 0}.muted{color:#5f6368;font-size:12px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card h2,.detail-card h2{font-size:17px;margin:0 0 14px}.row,.kv{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px}.progress{height:8px;background:#e8eaed;border-radius:8px;margin-top:7px;overflow:hidden}.progress span{height:100%;display:block;background:#4285f4;border-radius:8px}.section-note{margin-top:16px;padding-top:14px;border-top:1px solid #eee;color:#5f6368;font-size:12px}.table{width:100%;border-collapse:collapse;font-size:13px}.table th{color:#5f6368;text-align:left;font-weight:500;background:#f8f9fa}.table td,.table th{padding:12px;border-bottom:1px solid #eceff1}.campaign-name{font-weight:600}.status{font-size:12px;color:#188038}.status i{display:inline-block;width:8px;height:8px;background:#34a853;border-radius:50%;margin-right:5px}.campaign-header{display:flex;justify-content:space-between;gap:20px;align-items:start}.eyebrow{color:#1967d2;font-size:12px;font-weight:600;text-transform:uppercase}.campaign-header h1{margin:6px 0;font-size:28px}.approval{font-size:11px;background:#e8f0fe;color:#1967d2;padding:8px 10px;border-radius:5px;font-weight:600}.big-status{font-size:13px;color:#188038}.segment{display:flex;gap:8px;margin:18px 0}.segment button{border:1px solid #dadce0;background:#fff;padding:9px 14px;border-radius:20px;cursor:pointer}.segment button.active{background:#e8f0fe;color:#1967d2;border-color:#c6dafc}.geo-list{display:flex;gap:8px;flex-wrap:wrap}.geo{font-size:12px;background:#f1f3f4;border-radius:20px;padding:7px 10px}.ai{background:linear-gradient(135deg,#fff 0%,#f5f8ff 100%)}.ai-title{color:#1967d2}.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.step{padding:12px;background:#f8f9fa;border-radius:7px;font-size:12px}.detail-card{margin-top:16px}.full{grid-column:1/-1}.copy-row{display:grid;grid-template-columns:90px 1fr 70px;gap:12px;padding:12px 0;border-bottom:1px solid #eee;font-size:13px}.copy-num{color:#5f6368}.copy-limit{text-align:right;color:#5f6368}.ad-preview{margin-top:16px;background:#fff;border:1px solid #dfe1e5;border-radius:8px;padding:20px;max-width:760px}
-.ad-label{font-size:12px;color:#5f6368;margin-bottom:5px}.ad-url{font-size:14px;color:#202124;margin-bottom:5px}.ad-url small{color:#5f6368}
-.ad-title{font-size:20px;color:#1a0dab;line-height:1.35;margin:5px 0 8px;font-weight:500}
-.ad-desc{font-size:14px;color:#4d5156;line-height:1.55}.ad-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.ad-links span{color:#1a0dab;font-size:14px;cursor:pointer}.preview-note{font-size:12px;color:#5f6368;margin-top:10px}
-.toast{position:fixed;right:24px;bottom:24px;background:#202124;color:white;padding:12px 16px;border-radius:6px;display:none;font-size:13px}.chart{height:210px;position:relative;background:linear-gradient(to bottom,transparent 24%,#eef0f2 25%,transparent 26%,transparent 49%,#eef0f2 50%,transparent 51%,transparent 74%,#eef0f2 75%,transparent 76%);border-radius:8px;overflow:hidden}.chart svg{width:100%;height:100%}.right{text-align:right}.kpi{font-size:13px;padding:8px 0;border-bottom:1px solid #eee}.kpi:last-child{border:0}
-@media(max-width:1000px){.side{position:static;width:100%;height:auto}.app{display:block}.main{margin:0;width:100%}.cards{grid-template-columns:repeat(2,1fr)}.grid2,.grid3{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr)}.filterbar{position:static;overflow:auto}.campaign-header{display:block}}@media(max-width:600px){.cards{grid-template-columns:1fr}.page{padding:18px}.copy-row{grid-template-columns:1fr}.side{display:none}.main{margin:0;width:100%}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Agentes IA - Fénix Beach Cartagena (Panel Google Ads)</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/google-theme.css">
 </head>
 <body>
-<div class="app">
-<aside class="side">
-<div class="brand"><span class="dots"><i></i><i></i><i></i><i></i></span>Google Ads</div>
-<button class="nav active" onclick="go('overview',this)">⌂ &nbsp; Resumen</button>
-<button class="nav" onclick="go('campaigns',this)">▣ &nbsp; Campañas</button>
-<div class="side-section">Campañas independientes</div>
-<button class="hotel-link" onclick="go('pasadias')"><div class="mark">P</div><div><b>Fénix Beach Club & Hotel</b><span>Google Ads · Pasadías</span></div></button>
-<button class="hotel-link" onclick="go('hotel')"><div class="mark">H</div><div><b>Hotel Fenix Beach Cartagena</b><span>Google Ads · Hospedaje</span></div></button>
-<button class="nav" onclick="go('recommendations',this)">✦ &nbsp; Recomendaciones</button>
-<div class="side-section">Planificación</div>
-<button class="nav" onclick="notify('Vista de propuesta de palabras clave')">◌ &nbsp; Planificador de palabras clave</button>
-<button class="nav" onclick="notify('Vista de proyección mensual')">◎ &nbsp; Planificador de rendimiento</button>
-<div class="side-section">Medición</div>
-<button class="nav" onclick="notify('Conversiones · pendientes de conexión')">⌁ &nbsp; Conversiones</button>
-<button class="nav" onclick="notify('Atribución disponible después de conectar Google Ads')">▤ &nbsp; Atribución</button>
-<div class="side-section">Informes</div>
-<button class="nav" onclick="go('overview',this)">▦ &nbsp; Paneles de control</button>
-</aside>
-<main class="main">
-<div class="filterbar"><button class="filter primary">Todas las campañas ⌄</button><button class="filter">Mes completo ⌄</button><button class="filter">Comparar: período anterior ⌄</button><span style="margin-left:auto;color:#5f6368;font-size:12px">Vista de propuesta · resultados mensuales proyectados</span></div>
 
-<section id="overview" class="page active">
-<h1 class="title">Descripción general</h1><div class="subtitle">Plan mensual para dos campañas independientes</div>
-<div class="notice"><b>Proyección mensual:</b> los indicadores mostrados corresponden a objetivos y resultados esperados del mes. Las campañas se medirán y optimizarán con datos reales después de su activación.</div>
-<div class="cards">
-<div class="score"><div class="label">Inversión mensual</div><div class="value">$8.000.000</div><div class="muted">COP · $4.000.000 por campaña</div></div>
-<div class="score"><div class="label">Ingresos proyectados</div><div class="value">$41.000.000</div><div class="muted">Proyección mensual estimada</div></div>
-<div class="score"><div class="label">Resultados objetivo</div><div class="value">178</div><div class="muted">38 estadías + 140 pasadías</div></div>
-<div class="score"><div class="label">ROAS objetivo</div><div class="value">≈ 5x</div><div class="muted">Según rendimiento proyectado</div></div>
-</div>
-<div class="grid2">
-<div class="card"><h2>Rendimiento mensual esperado</h2><div class="chart"><svg viewBox="0 0 1000 250" preserveAspectRatio="none"><polyline points="0,205 130,175 250,182 380,125 510,140 650,82 780,95 900,42 1000,58" fill="none" stroke="#4285f4" stroke-width="4"/><polyline points="0,220 130,205 250,190 380,165 510,150 650,132 780,115 900,95 1000,78" fill="none" stroke="#34a853" stroke-width="4"/></svg></div><div class="section-note">Seguimiento mensual de inversión, conversiones y reservas.</div></div>
-<div class="card ai"><h2 class="ai-title">✦ Resumen estratégico</h2><p>Las dos campañas trabajan de forma independiente para evitar mezclar intención, conversiones, motores de reserva o presupuesto.</p><div class="kpi"><b>Pasadías:</b> Fénix Beach Club & Hotel</div><div class="kpi"><b>Hospedaje:</b> Hotel Fenix Beach Cartagena</div><div class="kpi"><b>Prioridad:</b> maximizar reservas y eficiencia durante el mes.</div></div>
-</div>
-<div class="card" style="margin-top:16px"><h2>Vista previa de campañas</h2><div style="overflow:auto"><table class="table"><thead><tr><th>Campaña</th><th>Estado</th><th>Inversión mensual</th><th>Resultado objetivo</th><th>Ingresos proyectados</th><th>ROAS</th></tr></thead><tbody>
-<tr><td><div class="campaign-name">Fénix Beach Club & Hotel</div><div class="muted">Pasadías + experiencias</div></td><td><span class="status"><i></i> Preparada</span></td><td>$4.000.000</td><td>140 pasadías</td><td>$21.000.000</td><td>5x</td></tr>
-<tr><td><div class="campaign-name">Hotel Fenix Beach Cartagena</div><div class="muted">Reservas de hospedaje</div></td><td><span class="status"><i></i> Preparada</span></td><td>$4.000.000</td><td>38 estadías</td><td>≈ $20.000.000</td><td>≈ 5x</td></tr>
-</tbody></table></div></div>
-</section>
+  <div class="app-container">
 
-<section id="campaigns" class="page">
-<h1 class="title">Campañas</h1><div class="subtitle">Cada campaña conserva su propia estrategia, medición y presupuesto mensual.</div>
-<div class="segment"><button class="active" onclick="campaignTab('pasadiasTab',this)">Pasadías</button><button onclick="campaignTab('hotelTab',this)">Hospedaje</button></div>
-<div id="pasadiasTab"><div class="cards"><div class="score"><div class="label">Presupuesto</div><div class="value">$4.000.000</div><div class="muted">COP / mes</div></div><div class="score"><div class="label">Pasadías</div><div class="value">140</div><div class="muted">Objetivo mensual</div></div><div class="score"><div class="label">Leads</div><div class="value">320</div><div class="muted">Objetivo mensual</div></div><div class="score"><div class="label">ROAS</div><div class="value">5x</div><div class="muted">Objetivo</div></div></div></div>
-<div id="hotelTab" style="display:none"><div class="cards"><div class="score"><div class="label">Presupuesto</div><div class="value">$4.000.000</div><div class="muted">COP / mes</div></div><div class="score"><div class="label">Estadías</div><div class="value">38</div><div class="muted">Objetivo mensual</div></div><div class="score"><div class="label">Ingresos</div><div class="value">≈$20M</div><div class="muted">Proyectados</div></div><div class="score"><div class="label">ROAS</div><div class="value">≈5x</div><div class="muted">Objetivo</div></div></div></div>
-</section>
+    <!-- ==========================================================================
+         SIDEBAR NAVIGATION
+         ========================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-wrapper">
+          <div class="google-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div class="brand-text-block">
+            <h1 class="brand-main-title">GOOGLE <span>AGENTES IA</span></h1>
+            <span class="brand-demo-tag">ENTORNO DE DEMOSTRACIÓN</span>
+          </div>
+        </div>
+      </div>
 
-<section id="pasadias" class="page">
-<div class="campaign-header"><div><div class="eyebrow">Google Ads · Campaña independiente</div><h1>Fénix Beach Club & Hotel</h1><p>Pasadías · restaurante · playa privada · piscina · experiencias · Tierra Bomba</p></div><div class="right"><div class="approval">PROYECCIÓN MENSUAL · PENDIENTE DE ACTIVACIÓN</div><div style="margin-top:10px"><span class="big-status"><span class="status"><i></i> Preparada</span></span></div></div></div>
-<div class="notice"><b>Pasadías:</b> esta vista contiene únicamente información comercial y estratégica de Fénix Beach Club & Hotel. No se mezclan datos, conversiones, enlaces ni presupuesto con la campaña de hospedaje.</div>
-<div class="cards"><div class="score"><div class="label">Inversión mensual</div><div class="value">$4.000.000</div><div class="muted">COP</div></div><div class="score"><div class="label">Pasadías proyectados</div><div class="value">140</div><div class="muted">por mes</div></div><div class="score"><div class="label">Leads proyectados</div><div class="value">320</div><div class="muted">por mes</div></div><div class="score"><div class="label">ROAS proyectado</div><div class="value">5x</div><div class="muted">objetivo</div></div></div>
-<div class="grid2"><div class="card"><h2>Estructura de campaña</h2><div style="margin:18px 0"><div class="row"><b>Google Search</b><span>70% · $2.800.000</span></div><div class="progress"><span style="width:70%"></span></div></div><div style="margin:18px 0"><div class="row"><b>Performance Max</b><span>30% · $1.200.000</span></div><div class="progress"><span style="width:30%;background:#34a853"></span></div></div><div class="section-note">Plan mensual presentado al cliente.</div></div>
-<div class="card ai"><h2 class="ai-title">✦ Enfoque estratégico</h2><p>Captar demanda con intención de reservar pasadías y ampliar alcance hacia audiencias con interés en playa, experiencias y gastronomía.</p><p><b>Conceptos prioritarios:</b> Playa privada · Cenas en la isla · Pasadías · Restaurante.</p></div></div>
-<div class="grid2"><div class="detail-card"><h2>Segmentación geográfica</h2><div class="geo-list"><span class="geo">Cartagena · 40%</span><span class="geo">Barranquilla y alrededores · 40%</span><span class="geo">Bogotá · Alta prioridad</span><span class="geo">Medellín · Alta prioridad</span><span class="geo">Cali</span><span class="geo">Bucaramanga</span><span class="geo">Estados Unidos</span><span class="geo">España</span></div><h3>Distribución estratégica</h3><div class="muted">40% Local/Regional · 60% Nacional e Internacional, con Bogotá y Medellín como mercados prioritarios.</div></div>
-<div class="detail-card"><h2>KPIs mensuales</h2><div class="kv"><span>Pasadías</span><b>140</b></div><div class="kv"><span>Leads</span><b>320</b></div><div class="kv"><span>Costo por resultado objetivo</span><b>≈ $28.500 COP</b></div><div class="kv"><span>ROAS objetivo</span><b>5x</b></div><div class="kv"><span>Ingreso estimado</span><b>$21.000.000</b></div></div></div>
-<div class="detail-card full"><h2>Centro de títulos y recursos</h2><div class="copy-row"><div class="copy-num">Título 1</div><div>Fénix Beach Club & Hotel</div><div class="copy-limit">Marca</div></div><div class="copy-row"><div class="copy-num">Título 2</div><div>Pasadía en Cartagena</div><div class="copy-limit">Intención</div></div><div class="copy-row"><div class="copy-num">Título 3</div><div>Playa Privada en Cartagena</div><div class="copy-limit">Diferencial</div></div><div class="copy-row"><div class="copy-num">Título 4</div><div>Cenas en la Isla</div><div class="copy-limit">Experiencia</div></div><div class="copy-row"><div class="copy-num">Competencia</div><div>Análisis comparativo: Éteka Beach Cartagena y otros competidores relevantes.</div><div class="copy-limit">Análisis</div></div></div>
+      <!-- Navigation Menu List -->
+      <nav class="sidebar-nav">
+        <a class="nav-item active" data-view="centro-control">
+          <span class="material-symbols-outlined">grid_view</span>
+          <span>Centro de Control</span>
+        </a>
+        <a class="nav-item" data-view="nueva-mision">
+          <span class="material-symbols-outlined">add_task</span>
+          <span>Nueva Misión</span>
+        </a>
+        <a class="nav-item" data-view="mis-agentes">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <span>Mis Agentes</span>
+        </a>
+        <a class="nav-item" data-view="oportunidades">
+          <span class="material-symbols-outlined">filter_list</span>
+          <span>Oportunidades</span>
+        </a>
+        <a class="nav-item" data-view="empresas">
+          <span class="material-symbols-outlined">domain</span>
+          <span>Empresas</span>
+        </a>
+        <a class="nav-item" data-view="eventos">
+          <span class="material-symbols-outlined">event</span>
+          <span>Eventos</span>
+        </a>
+        <a class="nav-item" data-view="recuperacion">
+          <span class="material-symbols-outlined">autorenew</span>
+          <span>Recuperación</span>
+        </a>
+        <a class="nav-item" data-view="inteligencia">
+          <span class="material-symbols-outlined">psychology</span>
+          <span>Inteligencia Comercial</span>
+        </a>
+        <a class="nav-item" data-view="negocios-cerrados">
+          <span class="material-symbols-outlined">emoji_events</span>
+          <span>Negocios Cerrados</span>
+        </a>
+        <a class="nav-item" data-view="estrategias">
+          <span class="material-symbols-outlined">lightbulb</span>
+          <span>Estrategias</span>
+        </a>
+        <a class="nav-item" data-view="resultados">
+          <span class="material-symbols-outlined">bar_chart</span>
+          <span>Resultados</span>
+        </a>
+        <a class="nav-item" data-view="reportes">
+          <span class="material-symbols-outlined">description</span>
+          <span>Reportes</span>
+        </a>
+        <a class="nav-item" data-view="ajustes">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Ajustes</span>
+        </a>
+      </nav>
 
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-card">
+          <p class="footer-card-text">IA trabajando para conectar tu hotel con más oportunidades cada día.</p>
+          <div class="footer-google-g">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M12.5 11v2.5h6.3c-.3 1.5-1.8 4.5-6.3 4.5-3.8 0-6.9-3.1-6.9-7s3.1-7 6.9-7c2.2 0 3.6.9 4.4 1.7l1.9-1.9C17.6 2.6 15.3 1.7 12.5 1.7 6.7 1.7 2 6.4 2 12.2s4.7 10.5 10.5 10.5c6.1 0 10.1-4.3 10.1-10.3 0-.7-.1-1.2-.2-1.7h-9.9z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-<div class="detail-card">
-<h2>Vista previa del anuncio · Así podría verse en Google</h2>
-<div class="ad-preview">
-<div class="ad-label">Patrocinado</div>
-<div class="ad-url">Fénix Beach Club & Hotel <small>· fenix.co</small></div>
-<div class="ad-title">Pasadía en Cartagena | Fénix Beach Club & Hotel</div>
-<div class="ad-desc">Disfruta playa privada, piscina, restaurante y experiencias en Tierra Bomba. Vive un día diferente frente al mar.</div>
-<div class="ad-links"><span>Pasadías</span><span>Playa Privada</span><span>Restaurante</span><span>Cenas en la Isla</span></div>
-</div>
-<div class="ad-preview">
-<div class="ad-label">Patrocinado · Variación posible</div>
-<div class="ad-url">Fénix Beach Club & Hotel <small>· fenix.co</small></div>
-<div class="ad-title">Disfruta una Playa Privada en Cartagena</div>
-<div class="ad-desc">Reserva tu experiencia en Tierra Bomba y disfruta playa, piscina, gastronomía y planes para compartir.</div>
-<div class="ad-links"><span>Ver Pasadías</span><span>Experiencias</span><span>Playa y Piscina</span></div>
-</div>
-<div class="preview-note">Vista conceptual basada en los recursos propuestos. La combinación final de títulos y descripciones puede variar según la búsqueda y la optimización de Google Ads.</div>
-</div>
-<div class="detail-card"><h2>Palabras clave propuestas · Pasadías</h2>
-<div style="overflow:auto"><table class="table"><thead><tr><th>Grupo</th><th>Palabras clave principales</th><th>Intención</th></tr></thead><tbody>
-<tr><td><b>Pasadías</b></td><td>pasadía Cartagena<br>pasadía en Cartagena<br>pasadía Tierra Bomba<br>pasadía isla Cartagena<br>pasadía con playa</td><td>Alta</td></tr>
-<tr><td><b>Beach Club</b></td><td>beach club Cartagena<br>beach club Tierra Bomba<br>club de playa Cartagena<br>día de playa Cartagena</td><td>Alta</td></tr>
-<tr><td><b>Playa privada</b></td><td>playa privada Cartagena<br>hotel con playa privada Cartagena<br>día de playa privada Cartagena</td><td>Media / Alta</td></tr>
-<tr><td><b>Restaurante</b></td><td>restaurante en Tierra Bomba<br>restaurante frente al mar Cartagena<br>almuerzo en isla Cartagena</td><td>Media</td></tr>
-<tr><td><b>Cenas</b></td><td>cena en isla Cartagena<br>cena romántica Cartagena<br>cena frente al mar Cartagena</td><td>Media / Alta</td></tr>
-</tbody></table></div>
-<div class="section-note">Las palabras clave definitivas se validarán con datos de volumen, competencia y términos de búsqueda. Se aplicarán palabras negativas para reducir búsquedas sin intención comercial.</div>
-</div>
-<div class="detail-card"><h2>Títulos y subtítulos del anuncio · Pasadías</h2>
-<div class="copy-row"><div class="copy-num">Título 1</div><div>Pasadía en Cartagena</div><div class="copy-limit">Alta intención</div></div>
-<div class="copy-row"><div class="copy-num">Título 2</div><div>Fénix Beach Club & Hotel</div><div class="copy-limit">Marca</div></div>
-<div class="copy-row"><div class="copy-num">Título 3</div><div>Disfruta una Playa Privada</div><div class="copy-limit">Diferencial</div></div>
-<div class="copy-row"><div class="copy-num">Título 4</div><div>Vive un Día en Tierra Bomba</div><div class="copy-limit">Experiencia</div></div>
-<div class="copy-row"><div class="copy-num">Título 5</div><div>Pasadías Frente al Mar</div><div class="copy-limit">Beneficio</div></div>
-<div class="copy-row"><div class="copy-num">Título 6</div><div>Restaurante, Playa y Piscina</div><div class="copy-limit">Oferta</div></div>
-<div class="copy-row"><div class="copy-num">Título 7</div><div>Reserva Tu Pasadía Online</div><div class="copy-limit">Llamado a la acción</div></div>
-<div class="copy-row"><div class="copy-num">Título 8</div><div>Cenas Especiales en la Isla</div><div class="copy-limit">Experiencia</div></div>
-<div class="copy-row"><div class="copy-num">Subtítulo 1</div><div>Disfruta playa, piscina, gastronomía y experiencias en Tierra Bomba.</div><div class="copy-limit">Descripción</div></div>
-<div class="copy-row"><div class="copy-num">Subtítulo 2</div><div>Reserva tu experiencia y vive un día diferente frente al mar.</div><div class="copy-limit">Descripción</div></div>
-<div class="copy-row"><div class="copy-num">Subtítulo 3</div><div>Planes para parejas, familias y grupos en una isla cerca de Cartagena.</div><div class="copy-limit">Descripción</div></div>
-</div>
-<div class="detail-card"><h2>Plan mensual</h2><div class="timeline"><div class="step"><b>1. Configuración</b><div class="muted">Cuenta y activos</div></div><div class="step"><b>2. Campañas</b><div class="muted">Search + PMax</div></div><div class="step"><b>3. Medición</b><div class="muted">Conversiones</div></div><div class="step"><b>4. Activación</b><div class="muted">Lanzamiento</div></div><div class="step"><b>5. Optimización</b><div class="muted">Basada en datos</div></div><div class="step"><b>6. Informe</b><div class="muted">Resultado mensual</div></div></div></div>
-</section>
+    <!-- ==========================================================================
+         MAIN WRAPPER & TOP HEADER
+         ========================================================================== -->
+    <div class="main-wrapper">
 
-<section id="hotel" class="page">
-<div class="campaign-header"><div><div class="eyebrow">Google Ads · Campaña independiente</div><h1>Hotel Fenix Beach Cartagena</h1><p>Reservas de hospedaje · habitaciones · Tierra Bomba · Cartagena</p></div><div class="right"><div class="approval">PROYECCIÓN MENSUAL · PENDIENTE DE ACTIVACIÓN</div><div style="margin-top:10px"><span class="status"><i></i> Preparada</span></div></div></div>
-<div class="notice"><b>Hospedaje:</b> esta vista contiene únicamente información de Hotel Fenix Beach Cartagena. El motor de reservas, conversiones, anuncios y presupuesto se administran de forma independiente.</div>
-<div class="cards"><div class="score"><div class="label">Inversión mensual</div><div class="value">$4.000.000</div><div class="muted">COP</div></div><div class="score"><div class="label">Estadías proyectadas</div><div class="value">38</div><div class="muted">por mes</div></div><div class="score"><div class="label">Ingresos proyectados</div><div class="value">≈$20.000.000</div><div class="muted">COP / mes</div></div><div class="score"><div class="label">ROAS proyectado</div><div class="value">≈5x</div><div class="muted">objetivo</div></div></div>
-<div class="grid2"><div class="card"><h2>Estructura de campaña</h2><div style="margin:18px 0"><div class="row"><b>Google Hotels</b><span>40%</span></div><div class="progress"><span style="width:40%"></span></div></div><div style="margin:18px 0"><div class="row"><b>Google Search</b><span>30%</span></div><div class="progress"><span style="width:30%;background:#34a853"></span></div></div><div style="margin:18px 0"><div class="row"><b>Performance Max</b><span>30%</span></div><div class="progress"><span style="width:30%;background:#fbbc04"></span></div></div><div class="section-note">Distribución estratégica dentro del presupuesto mensual de $4.000.000.</div></div>
-<div class="card ai"><h2 class="ai-title">✦ Enfoque estratégico</h2><p>Captar usuarios con intención directa de reservar alojamiento, aparecer en comparación de hoteles y reforzar remarketing y búsqueda de alta intención.</p><p><b>Motor de reservas:</b> Omnibees.</p></div></div>
-<div class="grid2"><div class="detail-card"><h2>Segmentación geográfica</h2><div class="geo-list"><span class="geo">Bogotá · Alta prioridad</span><span class="geo">Medellín · Alta prioridad</span><span class="geo">Cartagena · Last-minute</span><span class="geo">Estados Unidos</span><span class="geo">España</span><span class="geo">Canadá</span></div></div>
-<div class="detail-card"><h2>KPIs mensuales</h2><div class="kv"><span>Inventario</span><b>33 habitaciones · 9 categorías</b></div><div class="kv"><span>Estadías</span><b>38 / mes</b></div><div class="kv"><span>ROAS objetivo</span><b>≈ 5x</b></div><div class="kv"><span>Ingreso estimado</span><b>≈ $20.000.000</b></div></div></div>
+      <header class="top-header">
+        <div class="header-left-title">
+          <div class="header-title-main">
+            <span class="status-dot-active"></span>
+            Departamento Comercial IA
+          </div>
+          <span class="header-sub-tag">Sistema Activo 24/7</span>
+        </div>
 
+        <div class="header-right-tools">
+          <!-- Client Selector Pill (FÉNIX BEACH CARTAGENA) -->
+          <div class="hotel-selector-badge">
+            <span class="material-symbols-outlined" style="font-size: 16px;">domain</span>
+            <select id="header-hotel-select">
+              <option value="all">Fénix Beach Cartagena (Todas las propiedades)</option>
+              <option value="beach-club">Fénix Beach Club & Restaurante Cartagena</option>
+              <option value="hotel">Hotel Fenix Beach Cartagena</option>
+            </select>
+          </div>
 
-<div class="detail-card">
-<h2>Vista previa del anuncio · Así podría verse en Google</h2>
-<div class="ad-preview">
-<div class="ad-label">Patrocinado</div>
-<div class="ad-url">Hotel Fenix Beach Cartagena <small>· fenix.co</small></div>
-<div class="ad-title">Hotel en Tierra Bomba | Hotel Fenix Beach Cartagena</div>
-<div class="ad-desc">Hospédate frente al mar en una isla cerca de Cartagena. Habitaciones, piscina, playa y experiencias para desconectarte.</div>
-<div class="ad-links"><span>Habitaciones</span><span>Ofertas</span><span>Experiencias</span><span>Reservar</span></div>
-</div>
-<div class="ad-preview">
-<div class="ad-label">Patrocinado · Variación posible</div>
-<div class="ad-url">Hotel Fenix Beach Cartagena <small>· fenix.co</small></div>
-<div class="ad-title">Hotel con Piscina y Playa en Cartagena</div>
-<div class="ad-desc">Escápate a Tierra Bomba y disfruta una estadía cerca de Cartagena en un entorno de playa y descanso.</div>
-<div class="ad-links"><span>Ver Habitaciones</span><span>Conoce el Hotel</span><span>Reservar</span></div>
-</div>
-<div class="preview-note">Vista conceptual basada en los recursos propuestos. La combinación final de títulos y descripciones puede variar según la búsqueda y la optimización de Google Ads.</div>
-</div>
-<div class="detail-card"><h2>Palabras clave propuestas · Hospedaje</h2>
-<div style="overflow:auto"><table class="table"><thead><tr><th>Grupo</th><th>Palabras clave principales</th><th>Intención</th></tr></thead><tbody>
-<tr><td><b>Marca</b></td><td>Hotel Fenix Beach Cartagena<br>Fenix Beach Hotel<br>hotel fenix tierra bomba</td><td>Muy alta</td></tr>
-<tr><td><b>Hotel Cartagena</b></td><td>hotel en Cartagena<br>hotel playa Cartagena<br>hotel con piscina Cartagena<br>hotel frente al mar Cartagena</td><td>Alta</td></tr>
-<tr><td><b>Isla / Tierra Bomba</b></td><td>hotel en Tierra Bomba<br>hotel isla Cartagena<br>hotel en isla cerca de Cartagena<br>alojamiento Tierra Bomba</td><td>Alta</td></tr>
-<tr><td><b>Experiencia</b></td><td>hotel con playa privada Cartagena<br>escapada romántica Cartagena<br>hotel para descansar Cartagena</td><td>Media / Alta</td></tr>
-<tr><td><b>Reserva</b></td><td>reservar hotel Cartagena<br>reservar hotel Tierra Bomba<br>hotel Cartagena reserva online</td><td>Muy alta</td></tr>
-</tbody></table></div>
-<div class="section-note">La campaña excluirá términos relacionados únicamente con pasadías, restaurante y búsquedas de baja intención cuando no correspondan al objetivo de hospedaje.</div>
-</div>
-<div class="detail-card"><h2>Títulos y subtítulos del anuncio · Hospedaje</h2>
-<div class="copy-row"><div class="copy-num">Título 1</div><div>Hotel en Tierra Bomba Cartagena</div><div class="copy-limit">Alta intención</div></div>
-<div class="copy-row"><div class="copy-num">Título 2</div><div>Hotel Fenix Beach Cartagena</div><div class="copy-limit">Marca</div></div>
-<div class="copy-row"><div class="copy-num">Título 3</div><div>Hospédate Frente al Mar</div><div class="copy-limit">Beneficio</div></div>
-<div class="copy-row"><div class="copy-num">Título 4</div><div>Escápate a una Isla Cerca de Cartagena</div><div class="copy-limit">Experiencia</div></div>
-<div class="copy-row"><div class="copy-num">Título 5</div><div>Hotel con Piscina y Playa</div><div class="copy-limit">Diferencial</div></div>
-<div class="copy-row"><div class="copy-num">Título 6</div><div>Reserva Tu Estadía Online</div><div class="copy-limit">Llamado a la acción</div></div>
-<div class="copy-row"><div class="copy-num">Título 7</div><div>Descansa en Tierra Bomba</div><div class="copy-limit">Experiencia</div></div>
-<div class="copy-row"><div class="copy-num">Título 8</div><div>Habitaciones para Tu Escapada</div><div class="copy-limit">Oferta</div></div>
-<div class="copy-row"><div class="copy-num">Subtítulo 1</div><div>Disfruta una estadía en una isla cerca de Cartagena, frente al mar.</div><div class="copy-limit">Descripción</div></div>
-<div class="copy-row"><div class="copy-num">Subtítulo 2</div><div>Habitaciones, piscina, playa y experiencias para desconectarte.</div><div class="copy-limit">Descripción</div></div>
-<div class="copy-row"><div class="copy-num">Subtítulo 3</div><div>Consulta disponibilidad y reserva directamente tu próxima estadía.</div><div class="copy-limit">Descripción</div></div>
-</div>
-<div class="detail-card"><h2>Plan de implementación</h2><div class="timeline"><div class="step"><b>1. Verificación</b><div class="muted">Google Hotel Center</div></div><div class="step"><b>2. Conexión</b><div class="muted">Omnibees</div></div><div class="step"><b>3. Inventario</b><div class="muted">Tarifas y disponibilidad</div></div><div class="step"><b>4. Medición</b><div class="muted">Conversiones</div></div><div class="step"><b>5. Lanzamiento</b><div class="muted">Campañas</div></div><div class="step"><b>6. Informe</b><div class="muted">Resultado mensual</div></div></div></div>
-</section>
+          <!-- Notification Bell -->
+          <button class="notification-bell-btn" title="Notificaciones del Sistema">
+            <span class="material-symbols-outlined" style="font-size: 18px;">notifications</span>
+            <span class="bell-badge-count">3</span>
+          </button>
 
-<section id="recommendations" class="page">
-<h1 class="title">Recomendaciones</h1><div class="subtitle">Estrategia previa a la activación y seguimiento mensual.</div>
-<div class="grid3"><div class="card ai"><h2 class="ai-title">✦ Pasadías</h2><p>Concentrar la estrategia en búsquedas de intención y experiencias diferenciadoras: playa privada, pasadías, restaurante y cenas en la isla.</p></div><div class="card ai"><h2 class="ai-title">✦ Hospedaje</h2><p>Priorizar la intención de reserva mediante Google Hotels, Search y Performance Max conectados al motor Omnibees.</p></div><div class="card ai"><h2 class="ai-title">✦ Optimización</h2><p>Medir resultados reales, reducir desperdicio y concentrar la inversión en los segmentos que demuestren mejor eficiencia.</p></div></div>
-</section>
-</main></div>
-<div id="toast" class="toast"></div>
-<script>
-function go(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-function campaignTab(id,btn){document.getElementById('pasadiasTab').style.display=id==='pasadiasTab'?'block':'none';document.getElementById('hotelTab').style.display=id==='hotelTab'?'block':'none';document.querySelectorAll('.segment button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
-function notify(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.style.display='none',2600)}
-</script></body></html>
+          <!-- User Profile Badge (Growth Partner - NO personal name) -->
+          <div class="user-profile-pill">
+            <div class="profile-avatar-circle">A</div>
+            <div class="profile-user-info">
+              <span class="profile-name">Administrador</span>
+              <span class="profile-role-title">Growth Partner</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ==========================================================================
+           MAIN CONTENT BODY & VIEW SECTIONS
+           ========================================================================== -->
+      <main class="content-body">
+
+        <!-- VIEW 1: CENTRO DE CONTROL (MAIN DASHBOARD) -->
+        <section id="view-centro-control" class="view-section active">
+
+          <!-- Top Grid: Constellation + Right Stack -->
+          <div class="control-center-grid">
+
+            <!-- Hero Constellation Node Card -->
+            <div class="hero-constellation-card">
+              <div class="constellation-header">
+                <h2 class="constellation-main-title">Tu equipo comercial IA está <span>trabajando</span></h2>
+                <p class="constellation-sub-title">7 agentes de IA trabajando de forma permanente para hacer crecer tu cadena hotelera.</p>
+              </div>
+
+              <!-- Interactive Node Constellation Canvas Area -->
+              <div class="constellation-canvas-area" id="constellation-container">
+                <svg class="constellation-svg" id="constellation-svg"></svg>
+
+                <!-- Central Node: Director Comercial IA -->
+                <div class="node-central">
+                  <div class="central-avatar-glow">
+                    <span class="material-symbols-outlined">psychology</span>
+                  </div>
+                  <h3 class="central-node-title">DIRECTOR COMERCIAL IA</h3>
+                  <p class="central-node-sub">Orquestador Principal</p>
+                  <span class="status-tag-active">ACTIVO</span>
+                </div>
+
+                <!-- 6 Orbital Connected Nodes -->
+                <div class="orbital-node node-prospeccion" data-agent-id="prospeccion" data-color="#00F2FE">
+                  <div class="orbital-icon-box" style="background: rgba(0,242,254,0.15); color: #00F2FE;">
+                    <span class="material-symbols-outlined">search</span>
+                  </div>
+                  <div class="orbital-info">
+                    <span class="orbital-name">PROSPECCIÓN IA</span>
+                    <span class="orbital-desc">Búsqueda diaria y calificación</span>
+                  </div>
+                </div>
+
+                <div class="orbital-node node-convenios" data-agent-id="convenios" data-color="#F59E0B">
+                  <div class="orbital-icon-box" style="background: rgba(245,158,11,0.15); color: #F59E0B;">
+                    <span class="material-symbols-outlined">handshake</span>
+                  </div>
+                  <div class="orbital-info">
+                    <span class="orbital-name">CONVENIOS IA</span>
+                    <span class="orbital-desc">Alianzas y agendamiento</span>
+                  </div>
+                </div>
+
+                <div class="orbital-node node-eventos" data-agent-id="eventos" data-color="#8B5CF6">
+                  <div class="orbital-icon-box" style="background: rgba(139,92,246,0.15); color: #8B5CF6;">
+                    <span class="material-symbols-outlined">event</span>
+                  </div>
+                  <div class="orbital-info">
+                    <span class="orbital-name">EVENTOS IA</span>
+                    <span class="orbital-desc">Eventos y organizadores</span>
+                  </div>
+                </div>
+
+                <div class="orbital-node node-comercial" data-agent-id="comercial" data-color="#10B981">
+                  <div class="orbital-icon-box" style="background: rgba(16,185,129,0.15); color: #10B981;">
+                    <span class="material-symbols-outlined">trending_up</span>
+                  </div>
+                  <div class="orbital-info">
+                    <span class="orbital-name">COMERCIAL IA</span>
+                    <span class="orbital-desc">Propuestas y seguimiento</span>
+                  </div>
+                </div>
+
+                <div class="orbital-node node-recuperacion" data-agent-id="recuperacion" data-color="#F97316">
+                  <div class="orbital-icon-box" style="background: rgba(249,115,22,0.15); color: #F97316;">
+                    <span class="material-symbols-outlined">autorenew</span>
+                  </div>
+                  <div class="orbital-info">
+                    <span class="orbital-name">RECUPERACIÓN IA</span>
+                    <span class="orbital-desc">Reactivación de clientes</span>
+                  </div>
+                </div>
+
+                <div class="orbital-node node-analista" data-agent-id="analista" data-color="#EC4899">
+                  <div class="orbital-icon-box" style="background: rgba(236,72,153,0.15); color: #EC4899;">
+                    <span class="material-symbols-outlined">analytics</span>
+                  </div>
+                  <div class="orbital-info">
+                    <span class="orbital-name">ANALISTA IA</span>
+                    <span class="orbital-desc">Análisis de mercado</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="constellation-footer-bar">
+                <button class="btn-view-activity" onclick="alert('Verificando actividad en tiempo real de los 7 agentes...')">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">insights</span>
+                  Ver actividad en tiempo real
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Panel Stack: Actividad en Tiempo Real + Nueva Misión -->
+            <div class="right-panel-stack">
+
+              <!-- Actividad en Tiempo Real Card -->
+              <div class="activity-card">
+                <div class="panel-card-header">
+                  <span class="panel-card-title">
+                    <span class="material-symbols-outlined" style="font-size: 14px; color: #10b981;">sensors</span>
+                    Actividad en Tiempo Real
+                  </span>
+                  <span class="live-badge">EN VIVO</span>
+                </div>
+                <div class="activity-feed-list" id="activity-feed-list">
+                  <!-- Feed renderizado dinámicamente por app.js -->
+                </div>
+              </div>
+
+              <!-- Nueva Misión Quick Launcher Card -->
+              <div class="new-mission-card">
+                <h3 class="mission-card-title">NUEVA MISIÓN</h3>
+                <p class="mission-card-sub">Define tu objetivo y deja que tu equipo IA lo haga realidad.</p>
+                <div class="mission-input-group">
+                  <textarea class="mission-text-area" id="mission-prompt-input" placeholder="Ej: Conseguir 10 reuniones con empresas de turismo en Bogotá"></textarea>
+                  <button class="btn-launch-mission" id="btn-launch-mission">
+                    <span>Lanzar Misión</span>
+                    <span class="material-symbols-outlined" style="font-size: 16px;">rocket_launch</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Metrics Row (7 Cards) -->
+          <div class="metrics-grid-row">
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">domain</span>
+                <span class="metric-label">Empresas Analizadas</span>
+              </div>
+              <div class="metric-value">1.284</div>
+              <span class="metric-trend">↑ 18% vs ayer</span>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">center_focus_strong</span>
+                <span class="metric-label">Oportunidades Activas</span>
+              </div>
+              <div class="metric-value">312</div>
+              <span class="metric-trend">↑ 23% vs ayer</span>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">handshake</span>
+                <span class="metric-label">En Negociación</span>
+              </div>
+              <div class="metric-value">48</div>
+              <span class="metric-trend">↑ 15% vs ayer</span>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">calendar_month</span>
+                <span class="metric-label">Reuniones Programadas</span>
+              </div>
+              <div class="metric-value">19</div>
+              <span class="metric-trend">↑ 27% vs ayer</span>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">emoji_events</span>
+                <span class="metric-label">Negocios Cerrados</span>
+              </div>
+              <div class="metric-value">27</div>
+              <span class="metric-trend">↑ 42% vs mes anterior</span>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">payments</span>
+                <span class="metric-label">Valor Facturado</span>
+              </div>
+              <div class="metric-value">$ 96.500.000 COP</div>
+              <span class="metric-trend">↑ 38% vs mes anterior</span>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="material-symbols-outlined metric-icon">query_stats</span>
+                <span class="metric-label">Tasa de Conversión</span>
+              </div>
+              <div class="metric-value">18.7%</div>
+              <span class="metric-trend">↑ 3.2 pp vs mes anterior</span>
+            </div>
+          </div>
+
+          <!-- Large Section: Negocios Cerrados Table & Detalle del Negocio Drawer -->
+          <div class="deals-module-container">
+
+            <!-- Table Module -->
+            <div class="deals-table-card">
+              <div class="deals-header-bar">
+                <div class="deals-title-group">
+                  <div class="deals-trophy-icon">
+                    <span class="material-symbols-outlined">emoji_events</span>
+                  </div>
+                  <div>
+                    <h3 class="deals-title-text">NEGOCIOS CERRADOS</h3>
+                    <p class="deals-sub-text">Negocios ganados por tu equipo IA</p>
+                  </div>
+                </div>
+
+                <div class="deals-filter-controls">
+                  <select class="filter-select" id="filter-hotel-select">
+                    <option value="all">Todas las propiedades</option>
+                    <option value="beach-club">Fénix Beach Club & Restaurante Cartagena</option>
+                    <option value="hotel">Hotel Fenix Beach Cartagena</option>
+                  </select>
+                  <select class="filter-select">
+                    <option value="2025">Este año</option>
+                    <option value="2024">2024</option>
+                  </select>
+                  <button class="btn-export" onclick="alert('Exportando reporte ejecutivo de negocios cerrados...')">Exportar reporte</button>
+                </div>
+              </div>
+
+              <table class="custom-deals-table">
+                <thead>
+                  <tr>
+                    <th>Empresa / Cliente</th>
+                    <th>Hotel</th>
+                    <th>Servicio Contratado</th>
+                    <th>Fecha Cierre</th>
+                    <th>Valor Facturado</th>
+                    <th>Agente Líder</th>
+                    <th>ROI Estimado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="deals-tbody">
+                  <!-- Filas dinámicas por app.js -->
+                </tbody>
+              </table>
+
+              <div class="deals-pagination-bar">
+                <span>Mostrando 5 de 27 negocios cerrados</span>
+                <div class="page-numbers-group">
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">3</button>
+                  <button class="page-btn">4</button>
+                  <button class="page-btn">5</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Detail Panel -->
+            <div class="deal-detail-card" id="deal-detail-container">
+              <!-- Renderizado dinámicamente por app.js al hacer clic en un negocio -->
+            </div>
+
+          </div>
+
+          <!-- Bottom Section: Beneficios & Crecimiento -->
+          <div class="bottom-section-grid">
+
+            <div class="why-irresistible-card">
+              <h3 class="bottom-card-title">¿POR QUÉ ESTE SISTEMA ES IRRESISTIBLE?</h3>
+              <div class="benefits-pills-row">
+                <div class="benefit-item-box">
+                  <div class="benefit-icon-wrap"><span class="material-symbols-outlined">schedule</span></div>
+                  <span class="benefit-name">Equipo IA 24/7</span>
+                  <span class="benefit-desc">Trabajando sin descanso para generar resultados.</span>
+                </div>
+                <div class="benefit-item-box">
+                  <div class="benefit-icon-wrap"><span class="material-symbols-outlined">rocket</span></div>
+                  <span class="benefit-name">Más oportunidades</span>
+                  <span class="benefit-desc">Mayor volumen y mejor calidad de prospectos.</span>
+                </div>
+                <div class="benefit-item-box">
+                  <div class="benefit-icon-wrap"><span class="material-symbols-outlined">verified</span></div>
+                  <span class="benefit-name">Negocios cerrados</span>
+                  <span class="benefit-desc">Más ventas y mayor impacto en ingresos.</span>
+                </div>
+                <div class="benefit-item-box">
+                  <div class="benefit-icon-wrap"><span class="material-symbols-outlined">psychology</span></div>
+                  <span class="benefit-name">Decisiones inteligentes</span>
+                  <span class="benefit-desc">Datos y análisis para tomar mejores decisiones.</span>
+                </div>
+                <div class="benefit-item-box">
+                  <div class="benefit-icon-wrap"><span class="material-symbols-outlined">equalizer</span></div>
+                  <span class="benefit-name">Escalable</span>
+                  <span class="benefit-desc">Listo para crecer con tu cadena hotelera.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="growth-highlight-card">
+              <div>
+                <h3 class="growth-title">Más oportunidades. Más negocios. Más crecimiento.</h3>
+                <p class="growth-sub">Agentes IA trabajando hoy, resultados mañana.</p>
+              </div>
+              <svg class="growth-chart-svg" viewBox="0 0 200 40">
+                <path d="M0,35 Q40,30 80,20 T160,10 T200,2" fill="none" stroke="#60a5fa" stroke-width="3"/>
+              </svg>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- VIEW 2: NUEVA MISIÓN -->
+        <section id="view-nueva-mision" class="view-section">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg);">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 12px;">Módulo: Nueva Misión</h2>
+            <p style="color: var(--text-sub); margin-bottom: 20px;">Crea una nueva misión comercial para que el Director Comercial IA coordine la ejecución entre los agentes.</p>
+            <div style="max-width: 600px;">
+              <textarea class="mission-text-area" style="height: 100px; margin-bottom: 16px;" placeholder="Describe el objetivo comercial detallado..."></textarea>
+              <button class="btn-launch-mission" onclick="alert('Misión enviada al Director Comercial IA.')">Lanzar Misión</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 3: MIS AGENTES -->
+        <section id="view-mis-agentes" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Mis Agentes (7 Agentes Conectados)</h2>
+          <div id="mis-agentes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;"></div>
+        </section>
+
+        <!-- VIEW 4: OPORTUNIDADES -->
+        <section id="view-oportunidades" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Embudo de Oportunidades B2B</h2>
+          <div id="oportunidades-pipeline-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;"></div>
+        </section>
+
+        <!-- VIEW 5: EMPRESAS -->
+        <section id="view-empresas" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Directorio de Empresas Analizadas</h2>
+          <div id="empresas-list-container" style="background: var(--bg-card); border: 1px solid var(--border-card); padding: 20px; border-radius: var(--radius-lg);"></div>
+        </section>
+
+        <!-- OTHER SUBVIEWS -->
+        <section id="view-eventos" class="view-section"><h2 style="font-family: 'Space Grotesk'; font-size: 20px; color:#ffffff; margin-bottom:12px;">Módulo: Eventos & Day Pass de Grupos</h2><p style="color:var(--text-sub);">Gestión de pasadías grupales y celebraciones de día en Fénix Beach Club & Restaurante Cartagena.</p></section>
+        <section id="view-recuperacion" class="view-section"><h2 style="font-family: 'Space Grotesk'; font-size: 20px; color:#ffffff; margin-bottom:12px;">Módulo: Recuperación de Leads</h2><p style="color:var(--text-sub);">Reactivación de cotizaciones frías para Day Pass y estadías de Hospedaje.</p></section>
+        <section id="view-inteligencia" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Inteligencia Comercial & Palabras Clave</h2>
+          <div id="inteligencia-container"></div>
+        </section>
+        <section id="view-negocios-cerrados" class="view-section"><h2 style="font-family: 'Space Grotesk'; font-size: 20px; color:#ffffff; margin-bottom:12px;">Módulo: Negocios Cerrados (Vista Completa)</h2><p style="color:var(--text-sub);">Listado histórico de negocios ganados en pasadías y hospedaje.</p></section>
+        <section id="view-estrategias" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Estrategias de Campañas Google Ads</h2>
+          <div id="estrategias-container"></div>
+        </section>
+        <section id="view-resultados" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Resultados & Performance de Campañas</h2>
+          <div id="resultados-container"></div>
+        </section>
+        <section id="view-reportes" class="view-section"><h2 style="font-family: 'Space Grotesk'; font-size: 20px; color:#ffffff; margin-bottom:12px;">Módulo: Reportes Ejecutivos</h2><p style="color:var(--text-sub);">Informes descargables por propiedad y rendimiento de inversión publicitaria.</p></section>
+        <section id="view-ajustes" class="view-section">
+          <h2 style="font-family: 'Space Grotesk'; font-size: 20px; color: #ffffff; margin-bottom: 16px;">Ajustes & Configuración de Propiedades</h2>
+          <div id="ajustes-container"></div>
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
